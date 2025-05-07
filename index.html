@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Saikumar &amp; Harini's Wedding Invitation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+
+  body {
+    background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%);
+    font-family: 'Open Sans', sans-serif;
+    color: #5a3145;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    padding: 15px 15px 40px;
+    position: relative;
+    overflow-y: auto;
+  }
+
+  .container {
+    max-width: 420px;
+    width: 100%;
+    background: rgba(255 255 255 / 0.95);
+    border-radius: 22px;
+    box-shadow: 0 15px 50px rgba(168 56 90 / 0.4);
+    padding: 36px 32px 48px;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 1;
+  }
+
+  /* Updated heading with stacked lines */
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: #ad235d;
+    text-shadow: 1px 2px 6px rgba(173, 35, 93, 0.7);
+    margin: 0 0 1.2rem 0;
+    line-height: 1.1;
+  }
+  h1 span {
+    display: block;
+  }
+  h1 .ampersand {
+    font-size: 3.2rem;
+    margin: 0.1rem 0 0.3rem 0;
+  }
+
+  h2 {
+    font-weight: 600;
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: #7b4868;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .welcome-note {
+    font-style: italic;
+    color: #7a4560;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  /* Video iframe container styling */
+  .video-container {
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(173, 35, 93, 0.3);
+    overflow: hidden;
+    margin-bottom: 30px;
+    position: relative;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 16px;
+  }
+
+  /* Details section below video */
+  .details {
+    border-top: 3px solid #e1bee7;
+    padding-top: 25px;
+    text-align: left;
+    font-weight: 600;
+    color: #7b4868;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .details strong {
+    color: #ad235d;
+    font-weight: 700;
+  }
+
+  .details div {
+    margin-bottom: 14px;
+  }
+
+  .location-link {
+    margin-top: 10px;
+    padding: 14px 28px;
+    background-color: #ad235d;
+    color: #fff;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(173, 35, 93, 0.7);
+    display: inline-block;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    user-select: none;
+  }
+
+  .location-link:hover,
+  .location-link:focus {
+    background-color: #bf3a6b;
+    box-shadow: 0 12px 35px rgba(191, 58, 107, 0.9);
+    outline: none;
+  }
+
+  .end-note {
+    margin-top: 24px;
+    font-style: italic;
+    color: #a14b6f;
+    font-size: 1rem;
+  }
+
+  .rsvp-button {
+    margin-top: 30px;
+    padding: 14px 32px;
+    background-color: #7b3f61;
+    color: #fff;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(123, 63, 97, 0.7);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .rsvp-button:hover,
+  .rsvp-button:focus {
+    background-color: #935272;
+    box-shadow: 0 10px 30px rgba(147, 82, 114, 0.9);
+    outline: none;
+  }
+
+  #rsvp-form {
+    margin-top: 25px;
+    background: #fef0f5;
+    border-radius: 16px;
+    padding: 25px 30px;
+    box-shadow: 0 6px 20px rgba(173, 35, 93, 0.3);
+    display: none;
+    text-align: left;
+  }
+
+  #rsvp-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #7b4868;
+  }
+
+  #rsvp-form input[type="text"] {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccadce;
+    margin-bottom: 16px;
+    font-family: inherit;
+    font-size: 1rem;
+  }
+
+  #rsvp-form button[type="submit"] {
+    background-color: #ad235d;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 12px 28px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 10px 28px rgba(173, 35, 93, 0.7);
+  }
+
+  #rsvp-form button[type="submit"]:hover,
+  #rsvp-form button[type="submit"]:focus {
+    background-color: #bf3a6b;
+    outline: none;
+  }
+
+  #rsvp-responses {
+    margin-top: 30px;
+    background: #fef0f5;
+    border-radius: 16px;
+    padding: 20px 25px;
+    box-shadow: 0 6px 20px rgba(173, 35, 93, 0.3);
+    font-size: 1rem;
+    color: #5a3145;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  #rsvp-responses h3 {
+    margin-top: 0;
+    font-family: 'Great Vibes', cursive;
+    color: #ad235d;
+  }
+
+  #rsvp-responses ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+  }
+  #rsvp-responses ul li {
+    margin-bottom: 6px;
+  }
+
+  #rsvp-responses::-webkit-scrollbar {
+    width: 8px;
+  }
+  #rsvp-responses::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  #rsvp-responses::-webkit-scrollbar-thumb {
+    background-color: #ae2e6f;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 3rem;
+    }
+    .container {
+      padding: 28px 20px 40px;
+      max-width: 95vw;
+    }
+    .details {
+      text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <main class="container" role="main" aria-label="Wedding Invitation">
+    <h1>
+      <span>Saikumar</span>
+      <span class="ampersand">&amp;</span>
+      <span>Harini</span>
+    </h1>
+    <h2>You're Invited</h2>
+    <p class="welcome-note">
+      With hearts full of joy and love, we invite you to join us in celebrating our union. Together for 10 wonderful years, we look forward to beginning this new chapter with your company.
+    </p>
+
+    <div class="video-container" aria-label="Wedding video">
+      <iframe src="https://drive.google.com/file/d/19YoDap5o_MVZ7glqlzFBjS-N-sCSsLmK/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <section class="details" aria-label="Event details">
+      <div><strong>Reception:</strong> 5th June 2025, 6:30 PM onwards</div>
+      <div><strong>Marriage:</strong> 6th June 2025, 7:00 AM</div>
+      <div><strong>Venue:</strong><br /> Sri Vedanta Desika Hall,<br /> 18, Venkatesa Agraharam Road, Mylapore,<br /> Chennai, Tamil Nadu 600004</div>
+    </section>
+
+    <a href="https://maps.app.goo.gl/8BGRgMU22RPEzs6r5" target="_blank" rel="noopener noreferrer" class="location-link" aria-label="Google Maps location for Sri Vedanta Desika Hall">
+      View Location on Google Maps
+    </a>
+    <p class="end-note">With love,<br>Saikumar &amp; Harini</p>
+
+    <button class="rsvp-button" id="toggle-rsvp-btn" aria-expanded="false" aria-controls="rsvp-form">
+      RSVP Now
+    </button>
+
+    <form id="rsvp-form" aria-live="polite" aria-label="RSVP form">
+      <p style="font-style: italic; color:#7a4560; margin-bottom: 15px;">
+        We will be expecting your presence to celebrate on our special day. Please confirm by clicking "Yes" below.
+      </p>
+      <label for="name-input">Your Name</label>
+      <input type="text" id="name-input" name="name" required autocomplete="name" placeholder="Enter your full name" />
+
+      <fieldset class="attendance" style="border: none; margin-bottom: 16px; padding: 0;">
+        <label>
+          <input type="checkbox" name="attendance" value="yes" required checked />
+          Yes
+        </label>
+      </fieldset>
+
+      <button type="submit">Submit RSVP</button>
+    </form>
+
+    <section id="rsvp-responses" aria-label="RSVP Responses" hidden>
+      <h3>RSVP Responses</h3>
+      <div>
+        <strong>Attending:</strong>
+        <ul id="attending-list"></ul>
+      </div>
+    </section>
+  </main>
+
+<script>
+  const toggleBtn = document.getElementById('toggle-rsvp-btn');
+  const rsvpForm = document.getElementById('rsvp-form');
+  const responsesSection = document.getElementById('rsvp-responses');
+  const attendingList = document.getElementById('attending-list');
+
+  // Toggle RSVP form visibility
+  toggleBtn.addEventListener('click', () => {
+    const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+    toggleBtn.setAttribute('aria-expanded', String(!expanded));
+    if (rsvpForm.style.display === 'block') {
+      rsvpForm.style.display = 'none';
+      responsesSection.hidden = true;
+    } else {
+      rsvpForm.style.display = 'block';
+      responsesSection.hidden = false;
+      renderResponses();
+      rsvpForm.scrollIntoView({behavior: 'smooth'});
+    }
+  });
+
+  // Load saved responses from localStorage or empty object
+  function getResponses() {
+    const data = localStorage.getItem('weddingRsvpResponses');
+    return data ? JSON.parse(data) : {};
+  }
+
+  // Save responses to localStorage
+  function saveResponses(responses) {
+    localStorage.setItem('weddingRsvpResponses', JSON.stringify(responses));
+  }
+
+  // Render RSVP responses in list
+  function renderResponses() {
+    const responses = getResponses();
+    attendingList.innerHTML = '';
+
+    const attendingNames = [];
+
+    for (const [name, attending] of Object.entries(responses)) {
+      if (attending === 'yes') attendingNames.push(name);
+    }
+
+    if (attendingNames.length === 0) {
+      attendingList.innerHTML = '<li>No responses yet.</li>';
+    } else {
+      attendingNames.sort().forEach(name => {
+        const li = document.createElement('li');
+        li.textContent = name;
+        attendingList.appendChild(li);
+      });
+    }
+  }
+
+  // Handle RSVP form submission
+  rsvpForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(rsvpForm);
+    const name = formData.get('name').trim();
+    const attendance = formData.get('attendance');
+
+    if (!name) {
+      alert('Please enter your name.');
+      return;
+    }
+
+    if (attendance !== 'yes') {
+      alert('Please confirm your attendance by checking "Yes".');
+      return;
+    }
+
+    const responses = getResponses();
+    responses[name] = attendance;
+    saveResponses(responses);
+
+    alert(`We will be honored by your presence, ${name}! Thank you for confirming your attendance.`);
+    rsvpForm.reset();
+    renderResponses();
+  });
+
+  window.addEventListener('load', () => {
+    const responses = getResponses();
+    if (Object.keys(responses).length > 0) {
+      responsesSection.hidden = false;
+    }
+  });
+</script>
+
+</body>
+</html>
